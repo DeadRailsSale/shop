@@ -3,13 +3,13 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('.')); // Изменено с 'public' на '.' (корень)
 
 app.post('/send-order', async (req, res) => {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   const { content } = req.body;
 
-  console.log('Получен запрос:', content); // Логирование для отладки
+  console.log('Получен запрос:', content);
   try {
     console.log('Попытка отправки в Discord с URL:', webhookUrl);
     const response = await fetch(webhookUrl, {

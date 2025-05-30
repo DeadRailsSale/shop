@@ -1,15 +1,30 @@
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
-// Явный маршрут для корня
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: '.' });
+// Логирование всех запросов для отладки
+app.use((req, res, next) => {
+  console.log(`Получен запрос: ${req.method} ${req.url}`);
+  next();
 });
 
-// Раздача статических файлов из корня (резервный вариант)
+// Явный маршрут для корня
+app.get('/', (req, res) => {
+  console.log('Запрос к корню /');
+  const filePath = path.resolve(__dirname, 'index.html');
+  console.log(`Попытка отправить файл: ${filePath}`);
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('Ошибка при отправке index.html:', err);
+      res.status(404).send('Not Found: index.html');
+    }
+  });
+});
+
+// Раздача статических файлов из корня
 app.use(express.static('.'));
 
 // Обработка POST-запросов на /send-order

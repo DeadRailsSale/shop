@@ -76,6 +76,13 @@
       text-align: center;
       cursor: default;
     }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
     .card:hover {
       background: #262626;
       transform: scale(1.02);
@@ -276,31 +283,31 @@
     <section>
       <h2>Классы</h2>
       <div class="grid" id="classesGrid">
-        <div class="card"><div class="card-title">Доктор — 26 тг</div><button class="add-to-cart" onclick="addToCart('Доктор', 26)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Майнер — 30 тг</div><button class="add-to-cart" onclick="addToCart('Майнер', 30)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Музыкант — 30 тг</div><button class="add-to-cart" onclick="addToCart('Музыкант', 30)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Арсонист — 40 тг</div><button class="add-to-cart" onclick="addToCart('Арсонист', 40)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Мастер упаковки — 55 тг</div><button class="add-to-cart" onclick="addToCart('Мастер упаковки', 55)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Некромант — 55 тг</div><button class="add-to-cart" onclick="addToCart('Некромант', 55)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Аламо — 80 тг</div><button class="add-to-cart" onclick="addToCart('Аламо', 80)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Ковбой — 75 тг</div><button class="add-to-cart" onclick="addToCart('Ковбой', 75)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Кондуктор — 75 тг</div><button class="add-to-cart" onclick="addToCart('Кондуктор', 75)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Высокий роллер — 80 тг</div><button class="add-to-cart" onclick="addToCart('Высокий роллер', 80)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Вереволк — 80 тг</div><button class="add-to-cart" onclick="addToCart('Вереволк', 80)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Выживший — 100 тг</div><button class="add-to-cart" onclick="addToCart('Выживший', 100)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Священник — 100 тг</div><button class="add-to-cart" onclick="addToCart('Священник', 100)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Вампир — 103 тг</div><button class="add-to-cart" onclick="addToCart('Вампир', 103)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Зомби — 105 тг</div><button class="add-to-cart" onclick="addToCart('Зомби', 105)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Майнер (доп.) — 55 тг</div><button class="add-to-cart" onclick="addToCart('Майнер (доп.)', 55)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Железный человек — 155 тг</div><button class="add-to-cart" onclick="addToCart('Железный человек', 155)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/alamo.jpg"><div class="card-title">Доктор — 26 тг</div><button class="add-to-cart" onclick="addToCart('Доктор', 26)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/miner.jpg"><div class="card-title">Майнер — 30 тг</div><button class="add-to-cart" onclick="addToCart('Майнер', 30)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/musician.jpg"><div class="card-title">Музыкант — 30 тг</div><button class="add-to-cart" onclick="addToCart('Музыкант', 30)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/arsonist.jpg"><div class="card-title">Арсонист — 40 тг</div><button class="add-to-cart" onclick="addToCart('Арсонист', 40)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/packmaster.jpg"><div class="card-title">Мастер упаковки — 55 тг</div><button class="add-to-cart" onclick="addToCart('Мастер упаковки', 55)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/necromancer.jpg"><div class="card-title">Некромант — 55 тг</div><button class="add-to-cart" onclick="addToCart('Некромант', 55)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/alamo.jpg"><div class="card-title">Аламо — 80 тг</div><button class="add-to-cart" onclick="addToCart('Аламо', 80)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/cowboy.jpg"><div class="card-title">Ковбой — 75 тг</div><button class="add-to-cart" onclick="addToCart('Ковбой', 75)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/conductor.jpg"><div class="card-title">Кондуктор — 75 тг</div><button class="add-to-cart" onclick="addToCart('Кондуктор', 75)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/highroller.jpg"><div class="card-title">Высокий роллер — 80 тг</div><button class="add-to-cart" onclick="addToCart('Высокий роллер', 80)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/werewolf.jpg"><div class="card-title">Вереволк — 80 тг</div><button class="add-to-cart" onclick="addToCart('Вереволк', 80)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/survivor.jpg"><div class="card-title">Выживший — 100 тг</div><button class="add-to-cart" onclick="addToCart('Выживший', 100)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/priest.jpg"><div class="card-title">Священник — 100 тг</div><button class="add-to-cart" onclick="addToCart('Священник', 100)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/vampire.jpg"><div class="card-title">Вампир — 103 тг</div><button class="add-to-cart" onclick="addToCart('Вампир', 103)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/zombie.jpg"><div class="card-title">Зомби — 105 тг</div><button class="add-to-cart" onclick="addToCart('Зомби', 105)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/milkman.jpg"><div class="card-title">Милкмен — 55 тг</div><button class="add-to-cart" onclick="addToCart('Майнер (доп.)', 55)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/ironman.jpg"><div class="card-title">Железный человек — 155 тг</div><button class="add-to-cart" onclick="addToCart('Железный человек', 155)">Добавить в корзину</button></div>
       </div>
     </section>
     <section>
       <h2>Поезда</h2>
       <div class="grid" id="trainsGrid">
-        <div class="card"><div class="card-title">Крупный рогатый скот — 225 тг</div><button class="add-to-cart" onclick="addToCart('Крупный рогатый скот', 225)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Золотая лихорадка — 300 тг</div><button class="add-to-cart" onclick="addToCart('Золотая лихорадка', 300)">Добавить в корзину</button></div>
-        <div class="card"><div class="card-title">Бронированный — 320 тг</div><button class="add-to-cart" onclick="addToCart('Бронированный', 320)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/cattle.jpg"><div class="card-title">Крупный рогатый скот — 225 тг</div><button class="add-to-cart" onclick="addToCart('Крупный рогатый скот', 225)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/goldrush.jpg"><div class="card-title">Золотая лихорадка — 300 тг</div><button class="add-to-cart" onclick="addToCart('Золотая лихорадка', 300)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/armored.jpg"><div class="card-title">Бронированный — 320 тг</div><button class="add-to-cart" onclick="addToCart('Бронированный', 320)">Добавить в корзину</button></div>
       </div>
     </section>
   </div>
@@ -432,6 +439,18 @@
       document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
       document.getElementById('cartPopup').style.display = 'none';
     }
+
+    // Добавление изображений в карточки
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.card').forEach(card => {
+        const imageSrc = card.getAttribute('data-image');
+        if (imageSrc) {
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          card.insertBefore(img, card.firstChild);
+        }
+      });
+    });
   </script>
 </body>
 </html>

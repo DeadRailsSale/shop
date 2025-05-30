@@ -43,6 +43,25 @@
     .menu-button:hover {
       background: #3a3a3a;
     }
+    .username-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+    }
+    #changeUsernameBtn {
+      background: #c0392b;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 0.9rem;
+    }
+    #changeUsernameBtn:hover {
+      background: #e74c3c;
+    }
     .container {
       max-width: 900px;
       margin: 30px auto;
@@ -105,6 +124,33 @@
     }
     button.add-to-cart:hover {
       background: #0056b3;
+    }
+
+    /* Счётчик количества */
+    .quantity-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .quantity-btn {
+      background: #2a2a2a;
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+    .quantity-btn:hover {
+      background: #3a3a3a;
+    }
+    .quantity-value {
+      font-size: 1rem;
+      font-weight: bold;
     }
 
     /* Корзина */
@@ -214,6 +260,124 @@
       pointer-events: auto;
     }
 
+    /* Начальная страница */
+    #loginSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      text-align: center;
+    }
+    #loginSection h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #loginSection input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #2a2a2a;
+      color: #fff;
+      margin-bottom: 20px;
+      width: 250px;
+    }
+    #loginSection button {
+      background: #28a745;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+    #loginSection button:hover {
+      background: #218838;
+    }
+    #warning {
+      background: #c0392b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+
+    /* Помощь аккаунту */
+    #accountHelpSection {
+      display: none;
+      padding: 20px;
+    }
+    .help-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 10px;
+    }
+    .help-section h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    /* Отзывы */
+    #reviewsSection {
+      display: none;
+      padding: 20px;
+    }
+    .reviews-form {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    .reviews-form textarea {
+      width: 100%;
+      height: 150px;
+      background: #2a2a2a;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .reviews-form .custom-file-upload {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      margin-bottom: 10px;
+    }
+    .reviews-form .custom-file-upload:hover {
+      background: #0056b3;
+    }
+    .reviews-form input[type="file"] {
+      display: none;
+    }
+    .reviews-form button {
+      background: #28a745;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .reviews-form button:hover {
+      background: #218838;
+    }
+    .word-count {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
     /* Адаптив для мобильных */
     @media (max-width: 600px) {
       body {
@@ -266,19 +430,74 @@
         font-size: 14px;
         line-height: 20px;
       }
+
+      #loginSection input {
+        width: 200px;
+      }
+      #warning {
+        max-width: 90vw;
+        padding: 10px;
+      }
+
+      .username-container {
+        font-size: 0.9rem;
+      }
+      #changeUsernameBtn {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+
+      .quantity-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+      }
+      .quantity-value {
+        font-size: 0.9rem;
+      }
+
+      .help-section {
+        padding: 10px;
+      }
+      .help-section h3 {
+        font-size: 1rem;
+      }
+
+      .reviews-form textarea {
+        height: 120px;
+      }
+      .reviews-form .custom-file-upload {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Каталог</div>
+    <div class="username-container" id="usernameContainer" style="display: none;">
+      <span id="usernameDisplay"></span>
+      <button id="changeUsernameBtn" onclick="changeUsername()">Изменить ник</button>
+    </div>
     <div class="menu-buttons">
       <button class="menu-button" onclick="showCatalog()">Каталог</button>
       <button class="menu-button" onclick="toggleCart()">Корзина</button>
+      <button class="menu-button" onclick="showAccountHelp()">Помощь аккаунту</button>
+      <button class="menu-button" onclick="showReviews()">Отзывы</button>
     </div>
   </header>
 
-  <div class="container" id="catalogSection">
+  <div class="container" id="loginSection">
+    <h1>Добро пожаловать!</h1>
+    <div id="warning">
+      <p>Внимание: Из-за возможных технических ошибок мы не несем ответственности за любые проблемы, связанные с использованием каталога. Продолжая, вы соглашаетесь с этим условием.</p>
+    </div>
+    <input type="text" id="robloxUsername" placeholder="Введите ваш ник в Roblox" required />
+    <button onclick="acceptTerms()">Принять условие и войти</button>
+  </div>
+
+  <div class="container" id="catalogSection" style="display: none;">
     <h1>Каталог товаров</h1>
     <section>
       <h2>Классы</h2>
@@ -312,6 +531,62 @@
     </section>
   </div>
 
+  <div class="container" id="accountHelpSection" style="display: none;">
+    <h1>Помощь аккаунту</h1>
+    <div class="help-section">
+      <h3>Помощь по квестам</h3>
+      <p>Выполняйте ежедневные и еженедельные квесты, чтобы получать награды. Проверьте раздел заданий в игре и следуйте инструкциям. Если квест не завершается, перезапустите игру или обратитесь в поддержку.</p>
+    </div>
+    <div class="help-section">
+      <h3>Достижения</h3>
+      <div class="grid" id="achievementsHelpGrid">
+        <div class="card"><div class="card-title">Стрелок<br>Имейте 20 оружия в своём инвентаре<br><hr>150 тг</div><button class="add-to-cart" onclick="addToCart('Стрелок', 150)">Добавить</button></div>
+        <div class="card"><div class="card-title">Магнат<br>Получите более 1000 игровых долларов в одной игре<br><hr>150 тг</div><button class="add-to-cart" onclick="addToCart('Магнат', 150)">Добавить</button></div>
+        <div class="card"><div class="card-title">Неубиваемый<br>Завершите игру, не убив ни одного игрока<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Неубиваемый', 250)">Добавить</button></div>
+        <div class="card"><div class="card-title">Пони экспресс<br>Завершите игру без игрока, использующего поезд<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Пони экспресс', 250)">Добавить</button></div>
+        <div class="card"><div class="card-title">Пацифист<br>Завершите игру, не убив врага<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Пацифист', 250)">Добавить</button></div>
+        <div class="card"><div class="card-title">Куча долларов<br>Завершите игру, ничего не продавая<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Куча долларов', 250)">Добавить</button></div>
+        <div class="card"><div class="card-title">Электричество осталось<br>Продать труп последнего босса Теслы<br><hr>300 тг</div><button class="add-to-cart" onclick="addToCart('Электричество осталось', 300)">Добавить</button></div>
+      </div>
+    </div>
+    <div class="help-section">
+      <h3>Фарм и накрутка</h3>
+      <p>Для быстрого заработка бондов участвуйте в событиях и выполняйте миссии с высоким вознаграждением. Регулярно проверяйте магазин на наличие бонусных предложений и используйте их для ускорения прогресса.</p>
+      <div class="grid" id="farmingHelpGrid">
+        <div class="card">
+          <div class="card-title">Облигации v1<hr><br>Цена: 5 тг за 1 облигацию</div>
+          <div class="quantity-controls">
+            <button class="quantity-btn" onclick="updateQuantity('bonds_v1', -1)">−</button>
+            <span class="quantity-value" id="bonds_v1_quantity">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('bonds_v1', 1)">+</button>
+          </div>
+          <div>Итого: <span id="bonds_v1_total">5 тг</span></div>
+          <button class="add-to-cart" onclick="addToCart('Облигации v1', 5 * getQuantity('bonds_v1'))">Добавить в корзину</button>
+        </div>
+        <div class="card">
+          <div class="card-title">Облигации v2: Опасные, но эффективные<hr><br>Цена: 150 тг за 1 минуту</div>
+          <div class="quantity-controls">
+            <button class="quantity-btn" onclick="updateQuantity('bonds_v2', -1)">−</button>
+            <span class="quantity-value" id="bonds_v2_quantity">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('bonds_v2', 1)">+</button>
+          </div>
+          <div>Итого: <span id="bonds_v2_total">150 тг</span></div>
+          <button class="add-to-cart" onclick="addToCart('Облигации v2', 150 * getQuantity('bonds_v2'))">Добавить в корзину</button>
+        </div>
+        <div class="card">
+          <div class="card-title">Накрутка побед<hr><br>Цена: 100 тг за 1 победу</div>
+          <div class="quantity-controls">
+            <button class="quantity-btn" onclick="updateQuantity('wins', -1)">−</button>
+            <span class="quantity-value" id="wins_quantity">1</span>
+            <button class="quantity-btn" onclick="updateQuantity('wins', 1)">+</button>
+          </div>
+          <div>Итого: <span id="wins_total">100 тг</span></div>
+          <button class="add-to-cart" onclick="addToCart('Накрутка побед', 100 * getQuantity('wins'))">Добавить в корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="cartPopup">
     <h3>Корзина</h3>
     <ul id="cartItems"></ul>
@@ -323,6 +598,17 @@
 
   <div id="notification"></div>
 
+  <div class="container" id="reviewsSection" style="display: none;">
+    <h1>Отзывы</h1>
+    <div class="reviews-form">
+      <textarea id="reviewText" placeholder="Напишите отзыв (до 500 слов)" maxlength="2500"></textarea>
+      <div class="word-count">Слов: <span id="wordCount">0</span>/500</div>
+      <label class="custom-file-upload" for="reviewPhoto1">Выберите фото</label>
+      <input type="file" id="reviewPhoto1" accept="image/*" multiple>
+      <button onclick="submitReview()">Отправить отзыв</button>
+    </div>
+  </div>
+
   <script>
     let cart = {};
 
@@ -332,7 +618,7 @@
       } else {
         cart[name] = { price: price, quantity: 1 };
       }
-      showNotification(`Добавлено: ${name}`);
+      showNotification(`Добавлено: ${name} (${price} тг)`);
       updateCartUI();
     }
 
@@ -403,6 +689,7 @@
         return;
       }
 
+      const robloxUsername = localStorage.getItem('robloxUsername') || 'Не указан';
       let total = 0;
       const items = Object.entries(cart).map(([name, item]) => {
         const itemTotal = item.price * item.quantity;
@@ -411,7 +698,7 @@
       }).join('\n');
 
       const discordMessage = {
-        content: `**Новый заказ**\n\n**Товары:**\n${items}\n\n**Итого:** ${total} тг`
+        content: `**Новый заказ**\n**Ник в Roblox:** ${robloxUsername}\n\n**Товары:**\n${items}\n\n**Итого:** ${total} тг`
       };
 
       fetch('/send-order', {
@@ -438,10 +725,88 @@
     function showCatalog() {
       document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
       document.getElementById('cartPopup').style.display = 'none';
+      document.getElementById('catalogSection').style.display = 'block';
+      document.getElementById('accountHelpSection').style.display = 'none';
+      document.getElementById('reviewsSection').style.display = 'none';
     }
 
-    // Добавление изображений в карточки
+    function showAccountHelp() {
+      document.getElementById('accountHelpSection').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('cartPopup').style.display = 'none';
+      document.getElementById('catalogSection').style.display = 'none';
+      document.getElementById('accountHelpSection').style.display = 'block';
+      document.getElementById('reviewsSection').style.display = 'none';
+    }
+
+    function showReviews() {
+      document.getElementById('reviewsSection').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('cartPopup').style.display = 'none';
+      document.getElementById('catalogSection').style.display = 'none';
+      document.getElementById('accountHelpSection').style.display = 'none';
+      document.getElementById('reviewsSection').style.display = 'block';
+    }
+
+    function updateUsernameDisplay() {
+      const robloxUsername = localStorage.getItem('robloxUsername');
+      const usernameContainer = document.getElementById('usernameContainer');
+      const usernameDisplay = document.getElementById('usernameDisplay');
+      if (robloxUsername) {
+        usernameDisplay.textContent = `Ник: ${robloxUsername}`;
+        usernameContainer.style.display = 'flex';
+      } else {
+        usernameContainer.style.display = 'none';
+      }
+    }
+
+    function changeUsername() {
+      localStorage.removeItem('robloxUsername');
+      document.getElementById('loginSection').style.display = 'flex';
+      document.getElementById('catalogSection').style.display = 'none';
+      document.getElementById('accountHelpSection').style.display = 'none';
+      document.getElementById('reviewsSection').style.display = 'none';
+      document.getElementById('usernameContainer').style.display = 'none';
+      document.getElementById('robloxUsername').value = '';
+    }
+
+    // Управление количеством
+    function updateQuantity(itemId, delta) {
+      let quantity = parseInt(document.getElementById(`${itemId}_quantity`).textContent);
+      quantity = Math.max(1, quantity + delta); // Не допускаем меньше 1
+      document.getElementById(`${itemId}_quantity`).textContent = quantity;
+
+      let total = 0;
+      if (itemId === 'bonds_v1') total = 5 * quantity;
+      else if (itemId === 'bonds_v2') total = 150 * quantity;
+      else if (itemId === 'wins') total = 100 * quantity;
+      document.getElementById(`${itemId}_total`).textContent = `${total} тг`;
+    }
+
+    function getQuantity(itemId) {
+      return parseInt(document.getElementById(`${itemId}_quantity`).textContent);
+    }
+
+    // Добавление изображений в карточки и управление отображением
     document.addEventListener('DOMContentLoaded', () => {
+      const robloxUsername = localStorage.getItem('robloxUsername');
+      const loginSection = document.getElementById('loginSection');
+      const catalogSection = document.getElementById('catalogSection');
+      const accountHelpSection = document.getElementById('accountHelpSection');
+      const reviewsSection = document.getElementById('reviewsSection');
+
+      if (robloxUsername) {
+        loginSection.style.display = 'none';
+        catalogSection.style.display = 'block';
+        accountHelpSection.style.display = 'none';
+        reviewsSection.style.display = 'none';
+      } else {
+        loginSection.style.display = 'flex';
+        catalogSection.style.display = 'none';
+        accountHelpSection.style.display = 'none';
+        reviewsSection.style.display = 'none';
+      }
+
+      updateUsernameDisplay();
+
       document.querySelectorAll('.card').forEach(card => {
         const imageSrc = card.getAttribute('data-image');
         if (imageSrc) {
@@ -451,6 +816,70 @@
         }
       });
     });
+
+    function acceptTerms() {
+      const robloxUsername = document.getElementById('robloxUsername').value.trim();
+      if (robloxUsername) {
+        localStorage.setItem('robloxUsername', robloxUsername);
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('catalogSection').style.display = 'block';
+        updateUsernameDisplay();
+      } else {
+        showNotification('Пожалуйста, введите ник в Roblox!');
+      }
+    }
+
+    function updateWordCount() {
+      const text = document.getElementById('reviewText').value.trim();
+      const words = text ? text.split(/\s+/).filter(word => word.length > 0).length : 0;
+      document.getElementById('wordCount').textContent = Math.min(words, 500);
+    }
+
+    document.getElementById('reviewText').addEventListener('input', updateWordCount);
+
+    async function submitReview() {
+      const text = document.getElementById('reviewText').value.trim();
+      const files = document.getElementById('reviewPhoto1').files;
+      if (text.split(/\s+/).filter(word => word.length > 0).length > 500) {
+        alert('Максимум 500 слов!');
+        return;
+      }
+      if (files.length > 3) {
+        alert('Максимум 3 фотографии!');
+        return;
+      }
+
+      const botToken = '7943317013:AAHfZ__FYakxqBHqdOInE-17uXzU2MW8dhU'; // Замените на токен бота
+      const chatId = '-1002556048787'; // Замените на ID канала
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      const photoUrl = `https://api.telegram.org/bot${botToken}/sendPhoto`;
+
+      // Отправка текста
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+        }),
+      });
+
+      // Отправка фото
+      for (let i = 0; i < Math.min(files.length, 3); i++) {
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', files[i]);
+        await fetch(photoUrl, {
+          method: 'POST',
+          body: formData,
+        });
+      }
+
+      alert('Отзыв отправлен!');
+      document.getElementById('reviewText').value = '';
+      document.getElementById('reviewPhoto1').value = '';
+      updateWordCount();
+    }
   </script>
 </body>
 </html>

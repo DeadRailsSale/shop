@@ -4,11 +4,10 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-// Раздача статических файлов (изменено в зависимости от структуры)
-app.use(express.static('.')); // Если index.html в корне
-// или
-// app.use(express.static('public')); // Если index.html в public/
+// Раздача статических файлов из корня (где лежит index.html)
+app.use(express.static('.'));
 
+// Обработка POST-запросов на /send-order
 app.post('/send-order', async (req, res) => {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   const { content } = req.body;

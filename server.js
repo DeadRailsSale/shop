@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 
 // Раздача статических файлов из корня
 app.use(express.static('.'));
+app.use(express.static('images'));
 
 // Обработка POST-запросов на /send-order
 app.post('/send-order', async (req, res) => {

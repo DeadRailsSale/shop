@@ -3,7 +3,11 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static('.')); // Изменено с 'public' на '.' (корень)
+
+// Раздача статических файлов (изменено в зависимости от структуры)
+app.use(express.static('.')); // Если index.html в корне
+// или
+// app.use(express.static('public')); // Если index.html в public/
 
 app.post('/send-order', async (req, res) => {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
@@ -30,4 +34,6 @@ app.post('/send-order', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Сервер запущен на порту 3000'));
+// Используем порт от Vercel или 3000 по умолчанию
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server listening on port ${port}`));

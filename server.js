@@ -4,13 +4,13 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-// Раздача статических файлов из корня
-app.use(express.static('.'));
-
 // Явный маршрут для корня
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: '.' });
 });
+
+// Раздача статических файлов из корня (резервный вариант)
+app.use(express.static('.'));
 
 // Обработка POST-запросов на /send-order
 app.post('/send-order', async (req, res) => {
@@ -38,6 +38,6 @@ app.post('/send-order', async (req, res) => {
   }
 });
 
-// Используем порт от Vercel или 3000 по умолчанию
+// Используем порт от Vercel
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));

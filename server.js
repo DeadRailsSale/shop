@@ -4,8 +4,13 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-// Раздача статических файлов из корня (где лежит index.html)
+// Раздача статических файлов из корня
 app.use(express.static('.'));
+
+// Явный маршрут для корня
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: '.' });
+});
 
 // Обработка POST-запросов на /send-order
 app.post('/send-order', async (req, res) => {

@@ -1,15 +1,23 @@
 const express = require('express');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
-// Раздача статических файлов из папки public
-app.use(express.static('public'));
+// Логирование для отладки
+app.use((req, res, next) => {
+  console.log(`Получен запрос: ${req.method} ${req.url}`);
+  next();
+});
+
+// Раздача статических файлов
+app.use(express.static('.')); // Для index.html
+app.use('/images', express.static('images')); // Явно для папки images
 
 // Явный маршрут для корня
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: 'public' });
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 // Обработка POST-запросов на /send-order
@@ -38,6 +46,5 @@ app.post('/send-order', async (req, res) => {
   }
 });
 
-// Используем порт от Vercel
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));

@@ -810,7 +810,7 @@
       .then(response => {
         if (response.ok) {
           showNotification('Заказ отправлен!');
-          window.open('https://t.me/DeadRailsShop02', '_blank');
+          window.location.href = 'https://t.me/DeadRailsShop02'; // Заменяем window.open
         } else {
           showNotification('Ошибка при отправке заказа');
         }

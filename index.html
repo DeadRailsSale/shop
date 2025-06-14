@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta name="description" content="Каталог товаров для Roblox: классы, поезда, квесты, фарм и накрутка. Покупайте игровые предметы и услуги, оставляйте отзывы в Telegram-канале МёртвыеРельсыОтзывы." />
+  <meta name="keywords" content="Roblox, каталог Roblox, игровые предметы, классы Roblox, поезда Roblox, квесты Roblox, фарм Roblox, накрутка побед, МёртвыеРельсыОтзывы, игровой магазин" />
   <title>Каталог</title>
   <style>
     * {
@@ -24,7 +26,6 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #333;
-      /* Убрано position: sticky и top: 0 */
     }
     .logo {
       font-size: 1.2rem;
@@ -78,16 +79,12 @@
       margin-bottom: 1.5rem;
       font-weight: 600;
     }
-
-    /* Сетка товаров */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 1rem;
       padding: 0 0.5rem;
     }
-
-    /* Карточки */
     .card {
       background: #1c1c1c;
       border: 1px solid #333;
@@ -132,8 +129,6 @@
     button.add-to-cart:hover {
       background: #0056b3;
     }
-
-    /* Счётчик количества */
     .quantity-controls {
       display: flex;
       justify-content: center;
@@ -159,8 +154,6 @@
       font-size: 0.9rem;
       font-weight: bold;
     }
-
-    /* Корзина */
     #cartPopup {
       display: none;
       position: fixed;
@@ -248,8 +241,6 @@
     button.remove-btn:hover {
       background: #666;
     }
-
-    /* Уведомление */
     #notification {
       position: fixed;
       bottom: 1rem;
@@ -271,8 +262,6 @@
       opacity: 1;
       pointer-events: auto;
     }
-
-    /* Начальная страница */
     #loginSection {
       display: flex;
       flex-direction: column;
@@ -318,8 +307,6 @@
       max-width: 90vw;
       font-size: 0.875rem;
     }
-
-    /* Помощь аккаунту */
     #accountHelpSection {
       display: none;
       padding: 1rem;
@@ -335,8 +322,6 @@
       margin-top: 0;
       font-size: 1rem;
     }
-
-    /* Отзывы */
     #reviewsSection {
       display: none;
       padding: 1rem;
@@ -398,8 +383,19 @@
       font-size: 0.75rem;
       margin-bottom: 0.5rem;
     }
-
-    /* Адаптив для разных размеров экрана */
+    .telegram-link {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .telegram-link a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .telegram-link a:hover {
+      color: #0056b3;
+    }
     @media (max-width: 1200px) {
       .container {
         max-width: 100%;
@@ -409,7 +405,6 @@
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       }
     }
-
     @media (max-width: 800px) {
       header {
         padding: 0.75rem 1rem;
@@ -428,7 +423,6 @@
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       }
     }
-
     @media (max-width: 600px) {
       body {
         font-size: 14px;
@@ -560,8 +554,10 @@
       .word-count {
         font-size: 0.625rem;
       }
+      .telegram-link {
+        font-size: 0.75rem;
+      }
     }
-
     @media (max-width: 400px) {
       .menu-buttons {
         flex-direction: column;
@@ -612,7 +608,7 @@
         <div class="card" data-image="images/packmaster.jpg"><div class="card-title">Мастер упаковки — 55 тг</div><button class="add-to-cart" onclick="addToCart('Мастер упаковки', 55)">Добавить в корзину</button></div>
         <div class="card" data-image="images/necromancer.jpg"><div class="card-title">Некромант — 55 тг</div><button class="add-to-cart" onclick="addToCart('Некромант', 55)">Добавить в корзину</button></div>
         <div class="card" data-image="images/alamo.jpg"><div class="card-title">Аламо — 80 тг</div><button class="add-to-cart" onclick="addToCart('Аламо', 80)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/cowboy.jpg"><div class="card-title">Ковбой — 75 тг</div><button class="add-to-cart" onclick="addToCart('Ковбой', 75)">Добавить в корзину</button></div>
+        <div class="card" data-image="images/cowboy.jpg"><div class mii-title">Ковбой — 75 тг</div><button class="add-to-cart" onclick="addToCart('Ковбой', 75)">Добавить в корзину</button></div>
         <div class="card" data-image="images/conductor.jpg"><div class="card-title">Кондуктор — 75 тг</div><button class="add-to-cart" onclick="addToCart('Кондуктор', 75)">Добавить в корзину</button></div>
         <div class="card" data-image="images/highroller.jpg"><div class="card-title">Высокий роллер — 80 тг</div><button class="add-to-cart" onclick="addToCart('Высокий роллер', 80)">Добавить в корзину</button></div>
         <div class="card" data-image="images/werewolf.jpg"><div class="card-title">Вереволк — 80 тг</div><button class="add-to-cart" onclick="addToCart('Вереволк', 80)">Добавить в корзину</button></div>
@@ -707,6 +703,9 @@
       <label class="custom-file-upload" for="reviewPhoto1">Выберите фото</label>
       <input type="file" id="reviewPhoto1" accept="image/*" multiple>
       <button onclick="submitReview()">Отправить отзыв</button>
+    </div>
+    <div class="telegram-link">
+      Наш канал с отзывами: <a href="https://t.me/AibaTimaBeka" target="_blank">МёртвыеРельсыОтзывы</a>
     </div>
   </div>
 
@@ -810,7 +809,7 @@
       .then(response => {
         if (response.ok) {
           showNotification('Заказ отправлен!');
-          window.location.href = 'https://t.me/DeadRailsShop02'; // Заменяем window.open
+          window.open('https://t.me/DeadRailsShop02', '_blank');
         } else {
           showNotification('Ошибка при отправке заказа');
         }

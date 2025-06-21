@@ -104,6 +104,7 @@
       object-fit: cover;
       border-radius: 0.5rem;
       margin-bottom: 0.5rem;
+      background: #2a2a2a;
       loading: lazy;
     }
     .card:hover {
@@ -251,8 +252,8 @@
       border-radius: 0.625rem;
       font-weight: 600;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 2000;
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
       max-width: 90vw;
@@ -260,7 +261,7 @@
     }
     #notification.show {
       opacity: 1;
-      pointer-events: auto;
+      transform: translateY(0);
     }
     #loginSection {
       display: flex;
@@ -299,6 +300,13 @@
     #loginSection button:hover {
       background: #218838;
     }
+    #adminBtn {
+      background: #f1c40f;
+      margin-top: 1rem;
+    }
+    #adminBtn:hover {
+      background: #d4ac0d;
+    }
     #warning {
       background: #c0392b;
       padding: 0.625rem;
@@ -306,6 +314,113 @@
       margin-bottom: 1.5rem;
       max-width: 90vw;
       font-size: 0.875rem;
+    }
+    #adminModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1c1c1c;
+      border: 1px solid #444;
+      border-radius: 0.625rem;
+      padding: 1rem;
+      width: 90vw;
+      max-width: 400px;
+      z-index: 2000;
+      box-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+    #adminModal h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+    #adminModal input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid #333;
+      border-radius: 0.375rem;
+      background: #2a2a2a;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    #adminModal button {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    #adminModal .submit-btn {
+      background: #28a745;
+      border: none;
+      color: white;
+    }
+    #adminModal .submit-btn:hover {
+      background: #218838;
+    }
+    #adminModal .cancel-btn {
+      background: #c0392b;
+      border: none;
+      color: white;
+      margin-top: 0.5rem;
+    }
+    #adminModal .cancel-btn:hover {
+      background: #e74c3c;
+    }
+    #adminSection {
+      display: none;
+      padding: 1rem;
+    }
+    #adminSection .admin-form {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    #adminSection .admin-form input,
+    #adminSection .admin-form select {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid #333;
+      border-radius: 0.375rem;
+      background: #2a2a2a;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    #adminSection .admin-form button {
+      background: #28a745;
+      border: none;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      font-size: 0.9rem;
+      width: 100%;
+      touch-action: manipulation;
+    }
+    #adminSection .admin-form button:hover {
+      background: #218838;
+    }
+    .delete-product-btn {
+      background: #c0392b;
+      border: none;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      font-size: 0.9rem;
+      width: 100%;
+      margin-top: 0.5rem;
+      touch-action: manipulation;
+    }
+    .delete-product-btn:hover {
+      background: #e74c3c;
     }
     #accountHelpSection {
       display: none;
@@ -533,6 +648,21 @@
         font-size: 0.75rem;
         padding: 0.5rem;
       }
+      #adminModal {
+        width: 95vw;
+        padding: 0.75rem;
+      }
+      #adminModal h2 {
+        font-size: 1rem;
+      }
+      #adminModal input {
+        font-size: 0.75rem;
+        padding: 0.375rem;
+      }
+      #adminModal button {
+        font-size: 0.75rem;
+        padding: 0.375rem;
+      }
       .help-section {
         padding: 0.5rem;
       }
@@ -557,16 +687,29 @@
       .telegram-link {
         font-size: 0.75rem;
       }
+      #adminSection .admin-form input,
+      #adminSection .admin-form select {
+        font-size: 0.75rem;
+        padding: 0.375rem;
+      }
+      #adminSection .admin-form button {
+        font-size: 0.75rem;
+        padding: 0.375rem 1rem;
+      }
+      .delete-product-btn {
+        font-size: 0.75rem;
+        padding: 0.375rem;
+      }
     }
     @media (max-width: 400px) {
       .menu-buttons {
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.5rem;
         align-items: stretch;
       }
       .menu-button {
         width: 100%;
-        padding: 0.5rem;
+        padding: 0.75rem;
         font-size: 0.9rem;
       }
     }
@@ -584,6 +727,7 @@
       <button class="menu-button" onclick="toggleCart()">Корзина</button>
       <button class="menu-button" onclick="showAccountHelp()">Помощь аккаунту</button>
       <button class="menu-button" onclick="showReviews()">Отзывы</button>
+      <button class="menu-button" onclick="showAdminSection()" id="adminMenuBtn" style="display: none;">Админ-панель</button>
     </div>
   </header>
 
@@ -594,42 +738,47 @@
     </div>
     <input type="text" id="robloxUsername" placeholder="Введите ваш ник в Roblox" required />
     <button onclick="acceptTerms()">Принять условие и войти</button>
+    <button id="adminBtn" onclick="showAdminModal()">Я админ</button>
+  </div>
+
+  <div id="adminModal">
+    <h2>Вход для администратора</h2>
+    <input type="password" id="adminPassword" placeholder="Введите пароль" />
+    <button class="submit-btn" onclick="verifyAdmin()">Войти</button>
+    <button class="cancel-btn" onclick="closeAdminModal()">Отмена</button>
+  </div>
+
+  <div class="container" id="adminSection" style="display: none;">
+    <h1>Админ-панель</h1>
+    <div class="admin-form">
+      <h2>Добавить новый товар</h2>
+      <input type="text" id="productName" placeholder="Название товара" required />
+      <input type="number" id="productPrice" placeholder="Цена (тг)" required min="0" />
+      <input type="text" id="productImage" placeholder="URL изображения (images/...) (опционально)" />
+      <select id="productCategory" required>
+        <option value="" disabled selected>Выберите категорию</option>
+        <option value="classes">Классы</option>
+        <option value="trains">Поезда</option>
+        <option value="achievements">Квесты</option>
+        <option value="farming">Фарм и накрутка</option>
+      </select>
+      <button onclick="addProduct()">Добавить товар</button>
+    </div>
+    <div class="admin-form">
+      <h2>Удалить товар</h2>
+      <div id="productsList" class="grid"></div>
+    </div>
   </div>
 
   <div class="container" id="catalogSection" style="display: none;">
     <h1>Каталог товаров</h1>
     <section>
       <h2>Классы</h2>
-      <div class="grid" id="classesGrid">
-        <div class="card" data-image="images/alamo.jpg"><div class="card-title">Доктор — 26 тг</div><button class="add-to-cart" onclick="addToCart('Доктор', 26)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/miner.jpg"><div class="card-title">Майнер — 30 тг</div><button class="add-to-cart" onclick="addToCart('Майнер', 30)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/musician.jpg"><div class="card-title">Музыкант — 30 тг</div><button class="add-to-cart" onclick="addToCart('Музыкант', 30)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/arsonist.jpg"><div class="card-title">Арсонист — 40 тг</div><button class="add-to-cart" onclick="addToCart('Арсонист', 40)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/packmaster.jpg"><div class="card-title">Мастер упаковки — 55 тг</div><button class="add-to-cart" onclick="addToCart('Мастер упаковки', 55)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/necromancer.jpg"><div class="card-title">Некромант — 55 тг</div><button class="add-to-cart" onclick="addToCart('Некромант', 55)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/alamo.jpg"><div class="card-title">Аламо — 80 тг</div><button class="add-to-cart" onclick="addToCart('Аламо', 80)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/cowboy.jpg"><div class mii-title">Ковбой — 75 тг</div><button class="add-to-cart" onclick="addToCart('Ковбой', 75)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/conductor.jpg"><div class="card-title">Кондуктор — 75 тг</div><button class="add-to-cart" onclick="addToCart('Кондуктор', 75)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/highroller.jpg"><div class="card-title">Высокий роллер — 80 тг</div><button class="add-to-cart" onclick="addToCart('Высокий роллер', 80)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/werewolf.jpg"><div class="card-title">Вереволк — 80 тг</div><button class="add-to-cart" onclick="addToCart('Вереволк', 80)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/survivor.jpg"><div class="card-title">Выживший — 100 тг</div><button class="add-to-cart" onclick="addToCart('Выживший', 100)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/priest.jpg"><div class="card-title">Священник — 100 тг</div><button class="add-to-cart" onclick="addToCart('Священник', 100)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/vampire.jpg"><div class="card-title">Вампир — 103 тг</div><button class="add-to-cart" onclick="addToCart('Вампир', 103)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/zombie.jpg"><div class="card-title">Зомби — 105 тг</div><button class="add-to-cart" onclick="addToCart('Зомби', 105)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/milkman.png"><div class="card-title">Милкмен — 55 тг</div><button class="add-to-cart" onclick="addToCart('Милкмен', 55)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/ironman.jpg"><div class="card-title">Железный человек — 155 тг</div><button class="add-to-cart" onclick="addToCart('Железный человек', 155)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/demolitionist.png"><div class="card-title">Подрывник — 75 тг</div><button class="add-to-cart" onclick="addToCart('Подрывник', 75)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/hunter.png"><div class="card-title">Охотник — 75 тг</div><button class="add-to-cart" onclick="addToCart('Охотник', 75)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/president.png"><div class="card-title">Президент — 75 тг</div><button class="add-to-cart" onclick="addToCart('Президент', 75)">Добавить в корзину</button></div>
-      </div>
+      <div class="grid" id="classesGrid"></div>
     </section>
     <section>
       <h2>Поезда</h2>
-      <div class="grid" id="trainsGrid">
-        <div class="card" data-image="images/cattle.jpg"><div class="card-title">Крупный рогатый скот — 225 тг</div><button class="add-to-cart" onclick="addToCart('Крупный рогатый скот', 225)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/goldrush.jpg"><div class="card-title">Золотая лихорадка — 300 тг</div><button class="add-to-cart" onclick="addToCart('Золотая лихорадка', 300)">Добавить в корзину</button></div>
-        <div class="card" data-image="images/armored.jpg"><div class="card-title">Бронированный — 320 тг</div><button class="add-to-cart" onclick="addToCart('Бронированный', 320)">Добавить в корзину</button></div>
-      </div>
+      <div class="grid" id="trainsGrid"></div>
     </section>
   </div>
 
@@ -637,15 +786,7 @@
     <h1>Помощь аккаунту</h1>
     <div class="help-section">
       <h3>Квесты</h3>
-      <div class="grid" id="achievementsHelpGrid">
-        <div class="card"><div class="card-title">Стрелок<br>Имейте 20 оружия в своём инвентаре<br><hr>150 тг</div><button class="add-to-cart" onclick="addToCart('Стрелок', 150)">Добавить</button></div>
-        <div class="card"><div class="card-title">Магнат<br>Получите более 1000 игровых долларов в одной игре<br><hr>150 тг</div><button class="add-to-cart" onclick="addToCart('Магнат', 150)">Добавить</button></div>
-        <div class="card"><div class="card-title">Неубиваемый<br>Завершите игру, не убив ни одного игрока<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Неубиваемый', 250)">Добавить</button></div>
-        <div class="card"><div class="card-title">Пони экспресс<br>Завершите игру без игрока, использующего поезд<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Пони экспресс', 250)">Добавить</button></div>
-        <div class="card"><div class="card-title">Пацифист<br>Завершите игру, не убив врага<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Пацифист', 250)">Добавить</button></div>
-        <div class="card"><div class="card-title">Куча долларов<br>Завершите игру, ничего не продавая<br><hr>250 тг</div><button class="add-to-cart" onclick="addToCart('Куча долларов', 250)">Добавить</button></div>
-        <div class="card"><div class="card-title">Электричество осталось<br>Продать труп последнего босса Теслы<br><hr>300 тг</div><button class="add-to-cart" onclick="addToCart('Электричество осталось', 300)">Добавить</button></div>
-      </div>
+      <div class="grid" id="achievementsHelpGrid"></div>
     </div>
     <div class="help-section">
       <h3>Фарм и накрутка</h3>
@@ -711,6 +852,8 @@
 
   <script>
     let cart = {};
+    let isAdmin = false;
+    let pollingInterval = null;
 
     function addToCart(name, price) {
       if (cart[name]) {
@@ -740,9 +883,7 @@
         const removeBtn = document.createElement('button');
         removeBtn.textContent = '×';
         removeBtn.className = 'remove-btn';
-        removeBtn.onclick = () => {
-          removeFromCart(name);
-        };
+        removeBtn.onclick = () => removeFromCart(name);
         li.appendChild(removeBtn);
 
         cartItemsElem.appendChild(li);
@@ -783,7 +924,7 @@
       }, 2000);
     }
 
-    function checkout() {
+    async function checkout() {
       if (Object.keys(cart).length === 0) {
         showNotification('Корзина пуста');
         return;
@@ -801,52 +942,98 @@
         content: `**Новый заказ**\n**Ник в Roblox:** ${robloxUsername}\n\n**Товары:**\n${items}\n\n**Итого:** ${total} тг`
       };
 
-      fetch('/send-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(discordMessage)
-      })
-      .then(response => {
+      try {
+        const response = await fetch('/send-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(discordMessage)
+        });
         if (response.ok) {
           showNotification('Заказ отправлен!');
           window.open('https://t.me/DeadRailsShop02', '_blank');
+          clearCart();
+          toggleCart();
         } else {
           showNotification('Ошибка при отправке заказа');
         }
-      })
-      .catch(error => {
+      } catch (error) {
         showNotification('Ошибка при отправке заказа');
         console.error('Error:', error);
+      }
+    }
+
+    function hideAllSections() {
+      const sections = ['loginSection', 'catalogSection', 'accountHelpSection', 'reviewsSection', 'adminSection', 'cartPopup', 'adminModal'];
+      sections.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) elem.style.display = 'none';
       });
     }
 
-    document.getElementById('cartPopup').style.display = 'none';
-
     function showCatalog() {
-      document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('cartPopup').style.display = 'none';
+      hideAllSections();
       document.getElementById('catalogSection').style.display = 'block';
-      document.getElementById('accountHelpSection').style.display = 'none';
-      document.getElementById('reviewsSection').style.display = 'none';
       document.getElementById('header').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showAccountHelp() {
-      document.getElementById('accountHelpSection').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('cartPopup').style.display = 'none';
-      document.getElementById('catalogSection').style.display = 'none';
+      hideAllSections();
       document.getElementById('accountHelpSection').style.display = 'block';
-      document.getElementById('reviewsSection').style.display = 'none';
       document.getElementById('header').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showReviews() {
-      document.getElementById('reviewsSection').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('cartPopup').style.display = 'none';
-      document.getElementById('catalogSection').style.display = 'none';
-      document.getElementById('accountHelpSection').style.display = 'none';
+      hideAllSections();
       document.getElementById('reviewsSection').style.display = 'block';
       document.getElementById('header').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showAdminSection() {
+      if (!isAdmin) return;
+      hideAllSections();
+      document.getElementById('adminSection').style.display = 'block';
+      document.getElementById('header').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      loadProductsForAdmin();
+    }
+
+    function showAdminModal() {
+      hideAllSections();
+      document.getElementById('adminModal').style.display = 'block';
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+      document.getElementById('adminPassword').value = '';
+    }
+
+    async function verifyAdmin() {
+      const password = document.getElementById('adminPassword').value;
+      try {
+        const response = await fetch('/verify-admin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+        const data = await response.json();
+        if (data.success) {
+          isAdmin = true;
+          localStorage.setItem('isAdmin', 'true');
+          document.getElementById('adminMenuBtn').style.display = 'block';
+          closeAdminModal();
+          showAdminSection();
+          startPolling(); // Начать polling после входа админа
+          showNotification('Вход администратора успешен!');
+        } else {
+          showNotification('Неверный пароль!');
+        }
+      } catch (error) {
+        showNotification('Ошибка при проверке пароля');
+        console.error('Error:', error);
+      }
     }
 
     function updateUsernameDisplay() {
@@ -863,11 +1050,12 @@
 
     function changeUsername() {
       localStorage.removeItem('robloxUsername');
+      localStorage.removeItem('isAdmin');
+      isAdmin = false;
+      document.getElementById('adminMenuBtn').style.display = 'none';
+      stopPolling(); // Остановить polling при выходе
+      hideAllSections();
       document.getElementById('loginSection').style.display = 'flex';
-      document.getElementById('catalogSection').style.display = 'none';
-      document.getElementById('accountHelpSection').style.display = 'none';
-      document.getElementById('reviewsSection').style.display = 'none';
-      document.getElementById('usernameContainer').style.display = 'none';
       document.getElementById('header').style.display = 'none';
       document.getElementById('robloxUsername').value = '';
     }
@@ -888,49 +1076,172 @@
       return parseInt(document.getElementById(`${itemId}_quantity`).textContent);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const robloxUsername = localStorage.getItem('robloxUsername');
-      const loginSection = document.getElementById('loginSection');
-      const catalogSection = document.getElementById('catalogSection');
-      const accountHelpSection = document.getElementById('accountHelpSection');
-      const reviewsSection = document.getElementById('reviewsSection');
-      const header = document.getElementById('header');
+    function loadProducts() {
+      fetch('/get-products')
+        .then(response => response.json())
+        .then(products => {
+          const grids = {
+            classes: document.getElementById('classesGrid'),
+            trains: document.getElementById('trainsGrid'),
+            achievements: document.getElementById('achievementsHelpGrid')
+          };
 
-      if (robloxUsername) {
-        loginSection.style.display = 'none';
-        catalogSection.style.display = 'block';
-        accountHelpSection.style.display = 'none';
-        reviewsSection.style.display = 'none';
-        header.style.display = 'block';
-      } else {
-        loginSection.style.display = 'flex';
-        catalogSection.style.display = 'none';
-        accountHelpSection.style.display = 'none';
-        reviewsSection.style.display = 'none';
-        header.style.display = 'none';
+          Object.values(grids).forEach(grid => grid.innerHTML = '');
+
+          products.forEach(product => {
+            const grid = grids[product.category];
+            if (grid) {
+              const card = document.createElement('div');
+              card.className = 'card';
+
+              if (product.image) {
+                const img = document.createElement('img');
+                img.src = product.image || '/images/placeholder.jpg';
+                img.alt = product.name;
+                img.loading = 'lazy';
+                card.appendChild(img);
+              }
+
+              const title = document.createElement('div');
+              title.className = 'card-title';
+              title.textContent = `${product.name} — ${product.price} тг`;
+
+              const button = document.createElement('button');
+              button.className = 'add-to-cart';
+              button.textContent = 'Добавить в корзину';
+              button.onclick = () => addToCart(product.name, product.price);
+
+              card.appendChild(title);
+              card.appendChild(button);
+              grid.appendChild(card);
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Error loading products:', error);
+        });
+    }
+
+    function loadProductsForAdmin() {
+      fetch('/get-products')
+        .then(response => response.json())
+        .then(products => {
+          const productsList = document.getElementById('productsList');
+          productsList.innerHTML = '';
+
+          products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const title = document.createElement('div');
+            title.className = 'card-title';
+            title.textContent = `${product.name} — ${product.price} тг (${product.category})`;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-product-btn';
+            deleteBtn.textContent = 'Удалить';
+            deleteBtn.onclick = () => {
+              if (confirm('Вы уверены, что хотите удалить этот товар?')) {
+                deleteProduct(product.id);
+              }
+            };
+
+            card.appendChild(title);
+            card.appendChild(deleteBtn);
+            productsList.appendChild(card);
+          });
+        })
+        .catch(error => {
+          console.error('Error loading admin products:', error);
+        });
+    }
+
+    async function addProduct() {
+      const name = document.getElementById('productName').value.trim();
+      const price = parseFloat(document.getElementById('productPrice').value);
+      const image = document.getElementById('productImage').value.trim();
+      const category = document.getElementById('productCategory').value;
+
+      if (!name || !price || !category) {
+        showNotification('Заполните все обязательные поля!');
+        return;
       }
 
-      updateUsernameDisplay();
-
-      document.querySelectorAll('.card').forEach(card => {
-        const imageSrc = card.getAttribute('data-image');
-        if (imageSrc) {
-          const img = document.createElement('img');
-          img.src = imageSrc;
-          img.loading = 'lazy';
-          card.insertBefore(img, card.firstChild);
+      try {
+        const response = await fetch('/add-product', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, price, image, category })
+        });
+        const data = await response.json();
+        if (data.success) {
+          showNotification(`Товар "${name}" добавлен!`);
+          document.getElementById('productName').value = '';
+          document.getElementById('productPrice').value = '';
+          document.getElementById('productImage').value = '';
+          document.getElementById('productCategory').selectedIndex = 0;
+          loadProducts(); // Обновляем каталог
+          loadProductsForAdmin(); // Обновляем админ-панель
+        } else {
+          showNotification('Ошибка при добавлении товара');
         }
-      });
-    });
+      } catch (error) {
+        showNotification('Ошибка при добавлении товара');
+        console.error('Error:', error);
+      }
+    }
+
+    async function deleteProduct(id) {
+      if (!isAdmin) return;
+      try {
+        const response = await fetch('/delete-product', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id })
+        });
+        const data = await response.json();
+        if (data.success) {
+          showNotification('Товар удалён!');
+          loadProducts(); // Обновляем каталог
+          loadProductsForAdmin(); // Обновляем админ-панель
+        } else {
+          showNotification('Ошибка при удалении товара');
+        }
+      } catch (error) {
+        showNotification('Ошибка при удалении товара');
+        console.error('Error:', error);
+      }
+    }
+
+    function startPolling() {
+      if (pollingInterval) return; // Не запускать, если уже работает
+      pollingInterval = setInterval(() => {
+        if (document.getElementById('catalogSection').style.display === 'block') {
+          loadProducts();
+        }
+        if (document.getElementById('adminSection').style.display === 'block') {
+          loadProductsForAdmin();
+        }
+      }, 30000); // Проверять каждые 30 секунд
+    }
+
+    function stopPolling() {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+        pollingInterval = null;
+      }
+    }
 
     function acceptTerms() {
       const robloxUsername = document.getElementById('robloxUsername').value.trim();
       if (robloxUsername) {
         localStorage.setItem('robloxUsername', robloxUsername);
-        document.getElementById('loginSection').style.display = 'none';
+        hideAllSections();
         document.getElementById('catalogSection').style.display = 'block';
         document.getElementById('header').style.display = 'block';
         updateUsernameDisplay();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        loadProducts();
       } else {
         showNotification('Пожалуйста, введите ник в Roblox!');
       }
@@ -942,18 +1253,22 @@
       document.getElementById('wordCount').textContent = Math.min(words, 500);
     }
 
-    document.getElementById('reviewText').addEventListener('input', updateWordCount);
-
     async function submitReview() {
       const text = document.getElementById('reviewText').value.trim();
       const files = document.getElementById('reviewPhoto1').files;
       if (text.split(/\s+/).filter(word => word.length > 0).length > 500) {
-        alert('Максимум 500 слов!');
+        showNotification('Максимум 500 слов!');
         return;
       }
       if (files.length > 3) {
-        alert('Максимум 3 фотографии!');
+        showNotification('Максимум 3 фотографии!');
         return;
+      }
+      for (let file of files) {
+        if (file.size > 5 * 1024 * 1024) {
+          showNotification('Размер файла не должен превышать 5 МБ!');
+          return;
+        }
       }
 
       const botToken = '7943317013:AAHfZ__FYakxqBHqdOInE-17uXzU2MW8dhU';
@@ -961,30 +1276,58 @@
       const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
       const photoUrl = `https://api.telegram.org/bot${botToken}/sendPhoto`;
 
-      await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: text,
-        }),
-      });
-
-      for (let i = 0; i < Math.min(files.length, 3); i++) {
-        const formData = new FormData();
-        formData.append('chat_id', chatId);
-        formData.append('photo', files[i]);
-        await fetch(photoUrl, {
+      try {
+        const textResponse = await fetch(url, {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text }),
         });
+        if (!textResponse.ok) throw new Error('Ошибка отправки текста');
+
+        for (let file of files) {
+          const formData = new FormData();
+          formData.append('chat_id', chatId);
+          formData.append('photo', file);
+          const photoResponse = await fetch(photoUrl, { method: 'POST', body: formData });
+          if (!photoResponse.ok) throw new Error('Ошибка отправки фото');
+        }
+
+        showNotification('Отзыв отправлен!');
+        document.getElementById('reviewText').value = '';
+        document.getElementById('reviewPhoto1').value = '';
+        updateWordCount();
+      } catch (error) {
+        showNotification('Ошибка при отправке отзыва');
+        console.error('Error:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const robloxUsername = localStorage.getItem('robloxUsername');
+      const isAdminStored = localStorage.getItem('isAdmin') === 'true';
+
+      if (robloxUsername) {
+        isAdmin = isAdminStored;
+        hideAllSections();
+        if (isAdmin) {
+          document.getElementById('adminMenuBtn').style.display = 'block';
+          showAdminSection();
+          startPolling(); // Начать polling для админа
+        } else {
+          showCatalog();
+        }
+        loadProducts();
+      } else {
+        hideAllSections();
+        document.getElementById('loginSection').style.display = 'flex';
+        document.getElementById('header').style.display = 'none';
       }
 
-      alert('Отзыв отправлен!');
-      document.getElementById('reviewText').value = '';
-      document.getElementById('reviewPhoto1').value = '';
-      updateWordCount();
-    }
+      updateUsernameDisplay();
+
+      const reviewText = document.getElementById('reviewText');
+      if (reviewText) reviewText.addEventListener('input', updateWordCount);
+    });
   </script>
 </body>
 </html>

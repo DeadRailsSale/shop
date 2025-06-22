@@ -1,13 +1,21 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
+const cors = require('cors'); // Добавляем cors
 
 const app = express();
+app.use(cors()); // Включаем CORS
 app.use(express.json());
 app.use(express.static('.'));
 
 // Загружаем products.json в память при старте
-let products = require('./products.json'); // Убедитесь, что products.json существует в корне проекта
+let products;
+try {
+  products = require('./products.json');
+} catch (error) {
+  console.error('Error loading products.json:', error);
+  products = []; // Используем пустой массив как fallback
+}
 
 app.get('/get-products', async (req, res) => {
   try {
@@ -84,6 +92,9 @@ app.post('/verify-admin', (req, res) => {
   }
 });
 
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });

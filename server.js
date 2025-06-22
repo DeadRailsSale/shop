@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs').promises;
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
@@ -7,50 +6,11 @@ const app = express();
 app.use(express.json());
 app.use(express.static('.'));
 
-const productsFile = './products.json';
-
-async function initProductsFile() {
-  try {
-    await fs.access(productsFile);
-  } catch {
-    await fs.writeFile(productsFile, JSON.stringify([
-      { id: uuidv4(), name: 'Доктор', price: 26, image: 'images/alamo.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Майнер', price: 30, image: 'images/miner.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Музыкант', price: 30, image: 'images/musician.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Арсонист', price: 40, image: 'images/arsonist.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Мастер упаковки', price: 55, image: 'images/packmaster.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Некромант', price: 55, image: 'images/necromancer.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Аламо', price: 80, image: 'images/alamo.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Ковбой', price: 75, image: 'images/cowboy.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Кондуктор', price: 75, image: 'images/conductor.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Высокий роллер', price: 80, image: 'images/highroller.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Вереволк', price: 80, image: 'images/werewolf.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Выживший', price: 100, image: 'images/survivor.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Священник', price: 100, image: 'images/priest.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Вампир', price: 103, image: 'images/vampire.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Зомби', price: 105, image: 'images/zombie.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Милкмен', price: 55, image: 'images/milkman.png', category: 'classes' },
-      { id: uuidv4(), name: 'Железный человек', price: 155, image: 'images/ironman.jpg', category: 'classes' },
-      { id: uuidv4(), name: 'Подрывник', price: 75, image: 'images/demolitionist.png', category: 'classes' },
-      { id: uuidv4(), name: 'Охотник', price: 75, image: 'images/hunter.png', category: 'classes' },
-      { id: uuidv4(), name: 'Президент', price: 75, image: 'images/president.png', category: 'classes' },
-      { id: uuidv4(), name: 'Крупный рогатый скот', price: 225, image: 'images/cattle.jpg', category: 'trains' },
-      { id: uuidv4(), name: 'Золотая лихорадка', price: 300, image: 'images/goldrush.jpg', category: 'trains' },
-      { id: uuidv4(), name: 'Бронированный', price: 320, image: 'images/armored.jpg', category: 'trains' },
-      { id: uuidv4(), name: 'Стрелок', price: 150, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Магнат', price: 150, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Неубиваемый', price: 250, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Пони экспресс', price: 250, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Пацифист', price: 250, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Куча долларов', price: 250, image: '', category: 'achievements' },
-      { id: uuidv4(), name: 'Электричество осталось', price: 300, image: '', category: 'achievements' }
-    ], null, 2));
-  }
-}
+// Загружаем products.json в память при старте
+let products = require('./products.json'); // Убедитесь, что products.json существует в корне проекта
 
 app.get('/get-products', async (req, res) => {
   try {
-    const products = JSON.parse(await fs.readFile(productsFile));
     res.status(200).json(products);
   } catch (error) {
     console.error('Error reading products:', error);
@@ -64,10 +24,8 @@ app.post('/add-product', async (req, res) => {
     return res.status(400).json({ success: false, message: 'Заполните все обязательные поля' });
   }
   try {
-    const products = JSON.parse(await fs.readFile(productsFile));
     const newProduct = { id: uuidv4(), name, price, image, category };
-    products.push(newProduct);
-    await fs.writeFile(productsFile, JSON.stringify(products, null, 2));
+    products.push(newProduct); // Обновляем данные в памяти
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error adding product:', error);
@@ -78,9 +36,7 @@ app.post('/add-product', async (req, res) => {
 app.post('/delete-product', async (req, res) => {
   const { id } = req.body;
   try {
-    let products = JSON.parse(await fs.readFile(productsFile));
-    products = products.filter(product => product.id !== id);
-    await fs.writeFile(productsFile, JSON.stringify(products, null, 2));
+    products = products.filter(product => product.id !== id); // Обновляем данные в памяти
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error deleting product:', error);
@@ -130,5 +86,4 @@ app.post('/verify-admin', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
-  initProductsFile();
 });

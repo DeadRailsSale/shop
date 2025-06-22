@@ -1,0 +1,212 @@
+[
+  {
+    "id": "e4980759-49c2-4aa6-b6b7-2e4210ff0fd2",
+    "name": "Доктор",
+    "price": 26,
+    "image": "images/alamo.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "945ad79d-6022-4c21-809b-450d1ce46586",
+    "name": "Майнер",
+    "price": 30,
+    "image": "images/miner.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "f934efe4-56f7-436f-b81d-a74a41cc257d",
+    "name": "Музыкант",
+    "price": 30,
+    "image": "images/musician.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "f009df2d-fc70-4f15-a69a-f0ab3b0ce6f9",
+    "name": "Арсонист",
+    "price": 40,
+    "image": "images/arsonist.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "95b256c0-ffcb-4289-895a-96cb1daeb7e3",
+    "name": "Мастер упаковки",
+    "price": 55,
+    "image": "images/packmaster.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "91f6bf16-b926-4575-bda6-89bd6cc2b4ed",
+    "name": "Некромант",
+    "price": 55,
+    "image": "images/necromancer.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "85d818be-4413-4ed1-8af2-4719af7d2a09",
+    "name": "Аламо",
+    "price": 80,
+    "image": "images/alamo.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "d21f38ba-f040-4471-8314-d2300281e3ed",
+    "name": "Ковбой",
+    "price": 75,
+    "image": "images/cowboy.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "ddb6a2a4-b961-4d05-b429-c42fe454f19b",
+    "name": "Кондуктор",
+    "price": 75,
+    "image": "images/conductor.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "6849cb02-b236-4a3c-b448-46838d2612af",
+    "name": "Высокий роллер",
+    "price": 80,
+    "image": "images/highroller.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "8707ca33-55b7-4aa0-821d-636dcf9e7849",
+    "name": "Вереволк",
+    "price": 80,
+    "image": "images/werewolf.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "8d71da14-ca5a-4c5e-9922-c0e4c22fd411",
+    "name": "Выживший",
+    "price": 100,
+    "image": "images/survivor.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "d3cc793f-2ebc-41a8-8542-dcd0d27309ab",
+    "name": "Священник",
+    "price": 100,
+    "image": "images/priest.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "7d3e7a85-8ebe-4e02-9c5a-9ebce3a185fe",
+    "name": "Вампир",
+    "price": 103,
+    "image": "images/vampire.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "b3126304-3453-4fda-8204-ae700a67f415",
+    "name": "Зомби",
+    "price": 105,
+    "image": "images/zombie.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "672fa149-4caf-4d2b-9f8c-24bd9c25236e",
+    "name": "Милкмен",
+    "price": 55,
+    "image": "images/milkman.png",
+    "category": "classes"
+  },
+  {
+    "id": "2dd9889b-c530-43a9-8461-a7906ec14cd1",
+    "name": "Железный человек",
+    "price": 155,
+    "image": "images/ironman.jpg",
+    "category": "classes"
+  },
+  {
+    "id": "ac3ef957-471d-4b74-9a2e-6b2bcd91539a",
+    "name": "Подрывник",
+    "price": 75,
+    "image": "images/demolitionist.png",
+    "category": "classes"
+  },
+  {
+    "id": "bb700b58-5d31-468e-b538-66960474491a",
+    "name": "Охотник",
+    "price": 75,
+    "image": "images/hunter.png",
+    "category": "classes"
+  },
+  {
+    "id": "39666dd6-0ed1-4b12-a4c6-cb7838a50bbd",
+    "name": "Президент",
+    "price": 75,
+    "image": "images/president.png",
+    "category": "classes"
+  },
+  {
+    "id": "248ca0dc-0798-4d4a-b8b0-ce7cb4dd33f0",
+    "name": "Крупный рогатый скот",
+    "price": 225,
+    "image": "images/cattle.jpg",
+    "category": "trains"
+  },
+  {
+    "id": "8408022c-1011-4492-aa2d-69481239eea9",
+    "name": "Золотая лихорадка",
+    "price": 300,
+    "image": "images/goldrush.jpg",
+    "category": "trains"
+  },
+  {
+    "id": "66f6191c-06ba-4f3a-b626-c944f52529bf",
+    "name": "Бронированный",
+    "price": 320,
+    "image": "images/armored.jpg",
+    "category": "trains"
+  },
+  {
+    "id": "a22de56e-1e6e-46bc-aa7f-2f782a66107b",
+    "name": "Стрелок",
+    "price": 150,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "5572ddf1-75f7-489a-9b9b-27161f9293ae",
+    "name": "Магнат",
+    "price": 150,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "846177ba-069f-4c22-bc8d-64a39802dc03",
+    "name": "Неубиваемый",
+    "price": 250,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "b19df6c7-a7f6-4939-833f-d5cd78387b0a",
+    "name": "Пони экспресс",
+    "price": 250,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "8bdd8bf2-83f1-48fd-806c-b1bdce95b035",
+    "name": "Пацифист",
+    "price": 250,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "0d830b95-b753-47c5-b46e-c07b20d3ce95",
+    "name": "Куча долларов",
+    "price": 250,
+    "image": "",
+    "category": "achievements"
+  },
+  {
+    "id": "4253c13e-ebc2-4ca4-8619-02f73cc33278",
+    "name": "Электричество осталось",
+    "price": 300,
+    "image": "",
+    "category": "achievements"
+  }
+]
